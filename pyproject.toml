@@ -18,6 +18,8 @@ packages = ["src/ledgerlens", "src/ledgerlens_eval"]
 dev = [
     "mypy>=2.3.1",
     "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
     "ruff>=0.16.10",
 ]
 
@@ -35,3 +37,12 @@ python_version = "3.12"
 strict = true
 files = ["src"]
 warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers -m 'not gpu and not contract and not live'"
+markers = [
+    "gpu: needs a CUDA GPU and downloaded models",
+    "contract: calls a real LLM provider (DeepSeek, Ollama, Mistral)",
+    "live: calls a real external API (filings.xbrl.org, ECB)",
+]
