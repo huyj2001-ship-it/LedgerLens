@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.import_linter_cache/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Data: raw reports and derived artefacts are never committed.
+# Only the manifest and the data README are tracked.
+data/*
+!data/README.md
+!data/manifest/
+data/manifest/*
+!data/manifest/filings_manifest.csv
+
+# Model artefacts
+finetune/outputs/
+*.gguf
+*.safetensors
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
