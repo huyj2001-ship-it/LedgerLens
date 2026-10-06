@@ -5,7 +5,10 @@ description = "Agentic RAG over European annual reports (ESEF), with numeric ans
 requires-python = ">=3.12,<3.13"
 license = "Apache-2.0"
 authors = [{ name = "Yujie Hu" }]
-dependencies = []
+dependencies = [
+    "pydantic>=2.13.5",
+    "pydantic-settings>=2.15.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -40,7 +43,7 @@ warn_unreachable = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra --strict-markers -m 'not gpu and not contract and not live'"
+addopts = "-ra --strict-markers --import-mode=importlib -m 'not gpu and not contract and not live'"
 markers = [
     "gpu: needs a CUDA GPU and downloaded models",
     "contract: calls a real LLM provider (DeepSeek, Ollama, Mistral)",
