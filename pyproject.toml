@@ -26,6 +26,7 @@ dev = [
     "pre-commit>=4.6.2",
     "pytest>=9.1.1",
     "pytest-cov>=7.1.0",
+    "pytest-timeout>=2.4.0",
     "respx>=0.23.1",
     "ruff>=0.16.10",
 ]
@@ -47,7 +48,7 @@ warn_unreachable = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra --strict-markers --import-mode=importlib -m 'not gpu and not contract and not live'"
+addopts = "-ra --strict-markers --import-mode=importlib --timeout=60 -m 'not gpu and not contract and not live'"
 markers = [
     "gpu: needs a CUDA GPU and downloaded models",
     "contract: calls a real LLM provider (DeepSeek, Ollama, Mistral)",
