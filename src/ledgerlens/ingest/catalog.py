@@ -7,10 +7,12 @@ exponentially on 429/5xx responses.
 
 from __future__ import annotations
 
+import hashlib
 import re
 import time
 from collections.abc import Callable
 from datetime import date, datetime
+from pathlib import Path
 from typing import Any
 
 import httpx
@@ -131,6 +133,28 @@ class FilingsClient:
                 response.raise_for_status()
                 payload: dict[str, Any] = response.json()
         return payload
+
+    def download(self, path_or_url: str, dest: Path) -> tuple[str, int]:
+        """Stream a file to ``dest`` atomically. Returns (sha256 hex digest, size in bytes)."""
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        tmp = dest.with_name(dest.name + ".part")
+        try:
+            for attempt in self._retrying:
+                with attempt:
+                    self._throttle()
+                    digest, size = hashlib.sha256(), 0
+                    url = self.url(path_or_url)
+                    with self._http.stream("GET", url, headers=self._headers) as resp:
+                        resp.raise_for_status()
+                        with tmp.open("wb") as fh:
+                            for chunk in resp.iter_bytes(1 << 20):
+                                fh.write(chunk)
+                                digest.update(chunk)
+                                size += len(chunk)
+            tmp.replace(dest)
+        finally:
+            tmp.unlink(missing_ok=True)
+        return digest.hexdigest(), size
 
     def list_filings(self, lei: str) -> list[FilingRecord]:
         """All filings of one entity, following JSON:API pagination links."""
