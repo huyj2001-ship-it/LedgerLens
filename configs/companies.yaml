@@ -1,0 +1,43 @@
+# Companies in the corpus. Only non-financial companies with a 31 December year end are used,
+# because banks and insurers do not report a comparable revenue line.
+# LEIs: https://search.gleif.org
+companies:
+  - lei: 724500Y6DUVHQD6OXN27
+    name: ASML Holding N.V.
+    short_name: ASML
+    aliases: [ASML Holding]
+    country: NL
+    currency: EUR
+    sector: Semiconductor equipment
+
+  - lei: H1FJE8H61JGM1JSGM897
+    name: Koninklijke Philips N.V.
+    short_name: Philips
+    aliases: [Royal Philips, Koninklijke Philips]
+    country: NL
+    currency: EUR
+    sector: Health technology
+
+  - lei: 724500973ODKK3IFQ447
+    name: Adyen N.V.
+    short_name: Adyen
+    aliases: []
+    country: NL
+    currency: EUR
+    sector: Payments
+
+  - lei: MINO79WLOO247M1IL051
+    name: Airbus SE
+    short_name: Airbus
+    aliases: [Airbus Group]
+    country: NL
+    currency: EUR
+    sector: Aerospace
+
+  - lei: 549300DAQ1CVT6CXN342
+    name: Novo Nordisk A/S
+    short_name: Novo Nordisk
+    aliases: [Novo]
+    country: DK
+    currency: DKK
+    sector: Pharmaceuticals
