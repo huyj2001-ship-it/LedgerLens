@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edge cases seen (or allowed by the spec) in ESEF filings:
+     older TR3 transform names, a non-standard prefix for the IFRS taxonomy, nil facts,
+     an unsupported transform, a dangling context reference and a typed dimension. -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ix="http://www.xbrl.org/2013/inlineXBRL"
+      xmlns:ixt3="http://www.xbrl.org/inlineXBRL/transformation/2015-02-26"
+      xmlns:xbrli="http://www.xbrl.org/2003/instance"
+      xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:iso="http://www.xbrl.org/2003/iso4217"
+      xmlns:ifrs="http://xbrl.ifrs.org/taxonomy/2021-03-24/ifrs-full"
+      xmlns:co="http://www.example.com/ext"
+      xml:lang="en">
+<head><title>Edge cases</title></head>
+<body>
+<div style="display:none"><ix:header><ix:resources>
+  <xbrli:context id="d"><xbrli:entity><xbrli:identifier scheme="http://standards.iso.org/iso/17442">X</xbrli:identifier></xbrli:entity>
+    <xbrli:period><xbrli:startDate>2022-01-01</xbrli:startDate><xbrli:endDate>2022-12-31</xbrli:endDate></xbrli:period></xbrli:context>
+  <xbrli:context id="typed"><xbrli:entity><xbrli:identifier scheme="http://standards.iso.org/iso/17442">X</xbrli:identifier>
+    <xbrli:segment><xbrldi:typedMember dimension="co:PlantAxis"><co:PlantId> 42 </co:PlantId></xbrldi:typedMember></xbrli:segment></xbrli:entity>
+    <xbrli:period><xbrli:instant>2022-12-31</xbrli:instant></xbrli:period></xbrli:context>
+  <xbrli:unit id="dkk"><xbrli:measure>iso:DKK</xbrli:measure></xbrli:unit>
+  <xbrli:unit id="pure"><xbrli:measure>xbrli:pure</xbrli:measure></xbrli:unit>
+</ix:resources></ix:header></div>
+<div class="page"><p>
+  TR3 dot decimal: <ix:nonFraction id="tr3-dot" name="ifrs:Revenue" contextRef="d" unitRef="dkk" decimals="-6" scale="6" format="ixt3:numdotdecimal">176,954</ix:nonFraction>
+  TR3 comma decimal: <ix:nonFraction id="tr3-comma" name="ifrs:Assets" contextRef="typed" unitRef="dkk" decimals="-5" scale="9" format="ixt3:numcommadecimal">1.234,5</ix:nonFraction>
+  TR3 zero dash: <ix:nonFraction id="tr3-zero" name="co:Other" contextRef="d" unitRef="dkk" decimals="0" format="ixt3:zerodash">–</ix:nonFraction>
+  Unit decimal: <ix:nonFraction id="unit-dec" name="co:Price" contextRef="d" unitRef="dkk" decimals="2" format="ixt3:numunitdecimal">12 kr 50</ix:nonFraction>
+  Nested span: <ix:nonFraction id="nested" name="co:Ratio" contextRef="d" unitRef="pure" decimals="INF"><span>0</span>.<span>25</span></ix:nonFraction>
+  Nil: <ix:nonFraction id="nil" name="co:Nothing" contextRef="d" unitRef="dkk" xsi:nil="true"/>
+  Unsupported: <ix:nonFraction id="odd" name="co:Odd" contextRef="d" unitRef="dkk" decimals="0" format="ixt3:datelonguk">1 January</ix:nonFraction>
+  Dangling: <ix:nonFraction id="dangling" name="co:Lost" contextRef="nowhere" unitRef="dkk" decimals="0">5</ix:nonFraction>
+</p></div>
+<div class="page"><p>second page</p></div>
+</body>
+</html>
