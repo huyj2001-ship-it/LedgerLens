@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hand-written miniature of an ESEF report in the "pageView" style (ASML, Adyen, Philips).
+     Values are invented but use the same markup patterns as the real filings. -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ix="http://www.xbrl.org/2013/inlineXBRL"
+      xmlns:ixt="http://www.xbrl.org/inlineXBRL/transformation/2020-02-12"
+      xmlns:xbrli="http://www.xbrl.org/2003/instance"
+      xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+      xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+      xmlns:ifrs-full="https://xbrl.ifrs.org/taxonomy/2022-03-24/ifrs-full"
+      xmlns:acme="http://www.acme.example/20241231"
+      xml:lang="en">
+<head><title>ACME Annual Report 2024</title>
+<style>.pageView{position:relative}</style>
+</head>
+<body>
+<div style="display:none">
+  <ix:header>
+    <ix:hidden>
+      <ix:nonFraction id="h-1" name="ifrs-full:Revenue" contextRef="c-2023" unitRef="u-eur" decimals="-5" scale="6" format="ixt:num-dot-decimal">999.9</ix:nonFraction>
+    </ix:hidden>
+    <ix:resources>
+      <xbrli:context id="c-2023">
+        <xbrli:entity><xbrli:identifier scheme="http://standards.iso.org/iso/17442">ACMEACMEACMEACME0001</xbrli:identifier></xbrli:entity>
+        <xbrli:period><xbrli:startDate>2023-01-01</xbrli:startDate><xbrli:endDate>2023-12-31</xbrli:endDate></xbrli:period>
+      </xbrli:context>
+      <xbrli:context id="c-2024">
+        <xbrli:entity><xbrli:identifier scheme="http://standards.iso.org/iso/17442">ACMEACMEACMEACME0001</xbrli:identifier></xbrli:entity>
+        <xbrli:period><xbrli:startDate>2024-01-01</xbrli:startDate><xbrli:endDate>2024-12-31</xbrli:endDate></xbrli:period>
+      </xbrli:context>
+      <xbrli:context id="i-2024">
+        <xbrli:entity><xbrli:identifier scheme="http://standards.iso.org/iso/17442">ACMEACMEACMEACME0001</xbrli:identifier></xbrli:entity>
+        <xbrli:period><xbrli:instant>2024-12-31</xbrli:instant></xbrli:period>
+      </xbrli:context>
+      <xbrli:context id="c-2024-eu">
+        <xbrli:entity>
+          <xbrli:identifier scheme="http://standards.iso.org/iso/17442">ACMEACMEACMEACME0001</xbrli:identifier>
+          <xbrli:segment><xbrldi:explicitMember dimension="ifrs-full:SegmentsAxis">acme:EuropeMember</xbrldi:explicitMember></xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period><xbrli:startDate>2024-01-01</xbrli:startDate><xbrli:endDate>2024-12-31</xbrli:endDate></xbrli:period>
+      </xbrli:context>
+      <xbrli:unit id="u-eur"><xbrli:measure>iso4217:EUR</xbrli:measure></xbrli:unit>
+      <xbrli:unit id="u-eps"><xbrli:divide>
+        <xbrli:unitNumerator><xbrli:measure>iso4217:EUR</xbrli:measure></xbrli:unitNumerator>
+        <xbrli:unitDenominator><xbrli:measure>xbrli:shares</xbrli:measure></xbrli:unitDenominator>
+      </xbrli:divide></xbrli:unit>
+    </ix:resources>
+  </ix:header>
+</div>
+<div class="pageView">
+  <div><span>ACME Annual Report 2024</span></div>
+  <div><span>Strategic report</span></div>
+  <div><span>Revenue grew strongly as demand recovered in all regions.</span></div>
+</div>
+<div class="pageView">
+  <div><span>Consolidated statement of profit or loss</span></div>
+  <table>
+    <tr><td>Year ended December 31 (€, in millions)</td><td>Notes</td><td>2023</td><td></td><td>2024</td></tr>
+    <tr><td>Total net sales</td><td>2</td>
+        <td><ix:nonFraction id="f-1" name="ifrs-full:Revenue" contextRef="c-2023" unitRef="u-eur" decimals="-5" scale="6" format="ixt:num-dot-decimal">1,234.5</ix:nonFraction></td><td></td>
+        <td><ix:nonFraction id="f-2" name="ifrs-full:Revenue" contextRef="c-2024" unitRef="u-eur" decimals="-5" scale="6" format="ixt:num-dot-decimal">1,500.0</ix:nonFraction></td></tr>
+    <tr><td>Cost of sales</td><td></td>
+        <td>(<ix:nonFraction id="f-3" name="ifrs-full:CostOfSales" contextRef="c-2023" unitRef="u-eur" decimals="-5" scale="6" format="ixt:num-dot-decimal">700.0</ix:nonFraction>)</td><td></td>
+        <td>(<ix:nonFraction name="ifrs-full:CostOfSales" contextRef="c-2024" unitRef="u-eur" decimals="-5" scale="6" format="ixt:num-dot-decimal">800.1</ix:nonFraction>)</td></tr>
+    <tr><td>Finance result</td><td></td>
+        <td><ix:nonFraction id="f-5" name="acme:FinanceResult" contextRef="c-2023" unitRef="u-eur" decimals="-5" scale="6" sign="-" format="ixt:num-dot-decimal">12.3</ix:nonFraction></td><td></td>
+        <td><ix:nonFraction id="f-6" name="acme:FinanceResult" contextRef="c-2024" unitRef="u-eur" decimals="-5" scale="6" format="ixt:fixed-zero">-</ix:nonFraction></td></tr>
+    <tr><td>Basic earnings per share</td><td>23</td>
+        <td><ix:nonFraction id="f-7" name="ifrs-full:BasicEarningsLossPerShare" contextRef="c-2023" unitRef="u-eps" decimals="2">1.50</ix:nonFraction></td><td></td>
+        <td><ix:nonFraction id="f-8" name="ifrs-full:BasicEarningsLossPerShare" contextRef="c-2024" unitRef="u-eps" decimals="2">1.75</ix:nonFraction></td></tr>
+  </table>
+  <div style="display: none"><span>Invisible text must not be indexed.</span></div>
+</div>
+<div class="pageView">
+  <div><span>Consolidated statement of financial position</span></div>
+  <table>
+    <tr><td>As at December 31 (€, in thousands)</td><td>2024</td></tr>
+    <tr><td>Total assets</td><td><ix:nonFraction id="f-9" name="ifrs-full:Assets" contextRef="i-2024" unitRef="u-eur" decimals="-3" scale="3" format="ixt:num-comma-decimal">3.456.789,0</ix:nonFraction></td></tr>
+    <tr><td>Revenue Europe</td><td><ix:nonFraction id="f-10" name="ifrs-full:Revenue" contextRef="c-2024-eu" unitRef="u-eur" decimals="-3" scale="3" format="ixt:num-dot-decimal">600,000</ix:nonFraction></td></tr>
+  </table>
+</div>
+</body>
+</html>
